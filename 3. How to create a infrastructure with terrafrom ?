@@ -1,0 +1,53 @@
+Step1: Make directory for any IAC. (and maintaied this by git its better for future purpose)
+      ex: mkdir projects_with_tf
+Step2: move into projects_with_tf directory
+Step3: write a file with .tf or .tf.json extention
+      ex: main.tf
+      
+      content of main.tf (assume cloud provider is aws and you can write for any provide)
+      ------------------
+      provider "aws" {
+        access_key = "xxxxxxxxxxxxxxxxxx"
+        secret_key = "xxxxxxxxxxxxxxxxxx"
+        region     = "us-east-1"
+     }
+     
+     #Note: we can also configure credentials with aws configure command on our host
+     
+     resource "aws_instance" "web" {
+        ami           = "ami-234i4323"
+        instance_type = "t2.micro"
+
+        tags {
+          Name = "HelloWorld"
+        }
+    }
+    
+    
+Step4: Make sure that there should be no other files other than terrafrom files, because all files in the current directory
+       will be read by terrafrom
+Step5: Now run:
+          terrafrom init  
+          Which will download the required plugin for aws cloud. if provider is other than aws then it will download the plugin for that
+          provider.
+          And creates a .terrafrom and under this plugins stored
+Step6: Now run:
+          terrafrom plan
+          It will show the what infrastructure will create before actually executing it.
+          This step is optional. Just to see the details of Infrastructure before creating it.
+          
+Step7: Now run:
+          terrafrom apply
+          
+          Which will create a infrastructure.
+          And also create a files called terraform.tfstate and terraform.tf.backup
+Step8: Now run:
+          terraform show
+           or
+          more terrafrom.tfstate
+          
+          shows the detail info about created infrastructure
+Step9: Now run
+          terraform destory
+          If you want to destroy/delete the created infrastructure.
+Step10: terraform refresh  (To refresh the terrafrom state if you did any modification from aws console)
