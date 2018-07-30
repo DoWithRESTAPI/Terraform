@@ -1,0 +1,15 @@
+Provider:
+        the underlying platforms which support Terraform.
+        Or simple the cloud provider.
+Resources: 
+        resource blocks define components of your infrastructure. 
+        Let say: ec2, s3, elb etc...
+Data sources: data sources allow data to be fetched or computed for use within Terraform configuration, allowing Terraform to build 
+        infrastructure based on information from outside of Terraform (or from a separate Terraform configuration file). 
+        Providers are responsible for defining and implementing data sources, which present read-only views of pre-existing data or 
+        compute new values on the fly.
+        
+        Providers are responsible in Terraform for defining and implementing data sources. 
+        
+        
+        
