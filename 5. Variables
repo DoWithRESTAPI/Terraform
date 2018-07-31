@@ -1,0 +1,117 @@
+Terraform is the set of files which describe how to define a Infrastructure with IAC.
+
+Let me explain very firt that is about varialbes files.
+
+
+you can take any file name to define variables but variables.tf is suggested.
+
+Let me talk first about input variables.
+
+Which are useful to interact with terraform code.(Like other languages)
+
+ex: vi variables.tf
+
+#https://www.terraform.io/docs/configuration/variables.html
+
+variable "access_key" {}
+variable "secret_key" {}
+variable "region" {
+  default = "us-east-1"
+}
+
+This defines three variables within your Terraform configuration. The first two have empty blocks {}. 
+The third sets a default. If a default value is set, the variable is optional. Otherwise, the variable is required. 
+If you run terraform plan now, Terraform will prompt you for the values for unset string variables.
+
+Note: The variable block configures a single input variable for a Terraform module. 
+      Each block declares a single variable.
+
+How to use above defined variables in terrafrom other files or inside of a same varibles.tf file.
+
+Let me take one more terraform file which is for provide info
+
+vi provider.tf
+
+  provider "aws" {
+  access_key = "${var.access_key}"
+  secret_key = "${var.secret_key}"
+  region     = "${var.region}"
+  }
+  
+  Note: Default variable type in a terraform is string.
+  
+  Explisity if you want to define then:
+        variable "myname" {
+          type="string"
+         }
+  
+  
+  Now if we run terraform apply command then it will ask for access_key and secret_key and substitues values in provider.tf file.
+  
+  Terraform accepts variable values in Four ways:
+        1. as above
+        2. terraform apply -var 'access_key=xxxxxx' -var 'secret_key=xxxxx'
+        3. We can create a extra file called terraform.tfvars with varialbe value information as follows
+              vi terrafrom.tfvars
+                    access_key = "xxxx"
+                    secret_key = "xxx"
+        4. From environment variables
+              Terraform will read environment variables in the form of TF_VAR_name to find the value for a variable. 
+              For example, the TF_VAR_access_key variable can be set to set the access_key variable.
+              
+              Note: Environment variables can only populate string-type variables. List and map type variables must be populated via one of the 
+              other mechanisms.
+  
+Variable Defaults:
+=================
+If no value is assigned to a variable via any of these methods and the variable has a default key in its declaration, that value
+will be used for the variable.
+---------------------------------------------------------------------------------------------------------------------------------
+  
+  
+ Let me go indepth:
+ The variable block configures a single input variable for a Terraform module.
+ Each block declares a single variable.
+ 
+ That is: suppose if we want to define a variable called myname then:
+    variable "myname" {}  --> empty variable and it will prompt while running terrarom, default string variable
+    variable "myname" {
+      type="string"       --> empty variable and it will prompt while running terrarom, explisitly mentioned variable as string.
+      }
+      
+    variable "myname" {
+       type="string"
+       default="Terraform coaching"
+       }
+       
+    variable "myname" {
+       type="string"
+       default="Terraform coaching"
+       description="This is a info"
+     }
+     
+     type,default and description are optional.
+     Make sure that if type is not set then by deault it is a string
+                    if default is not set then it will prompt and here if you are not providing then default key value it will take
+                    if descripting is not set then it is empty
+                    
+     Note about descrition:  A human-friendly description for the variable. This is primarily for documentation for users using your 
+                            Terraform configuration. When a module is published in Terraform Registry, the given description is shown 
+                            as part of the documentation.
+                            
+                            
+                            
+    Output variables:
+    ---------------
+    Try this but not sure as of now:
+    
+    Outputs are a way to tell Terraform what data is important. This data is outputted when apply is called, and can be queried using 
+    the terraform output command.
+    
+    We can add output variable in any .tf files
+        
+        output "ip" {
+          value = "${myname}"
+          }
+  
+  
