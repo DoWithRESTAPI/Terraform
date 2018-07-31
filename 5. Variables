@@ -111,7 +111,7 @@ will be used for the variable.
     We can add output variable in any .tf files
         
         output "ip" {
-          value = "${myname}"
+          value = "${var.myname}"
           }
   
   
