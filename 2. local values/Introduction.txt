@@ -1,2 +1,6 @@
+based on test/prod we should define values for local
+
 https://medium.com/@diogok/terraform-workspaces-and-locals-for-environment-separation-a5b88dd516f5
+
+https://www.terraform.io/docs/configuration/locals.html
 
