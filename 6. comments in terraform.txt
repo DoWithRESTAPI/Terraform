@@ -1,0 +1,11 @@
+# is used to comment single line
+
+/*
+line1
+line2
+.
+.
+.
+*/
+
+#The above is for multiple line comments
