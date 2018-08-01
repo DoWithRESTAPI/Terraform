@@ -138,3 +138,4 @@ will be used for the variable.
   
   Note: See more about: terraform output -json instance_ips | jq '.value[0]'
   
+  https://stedolan.github.io/jq/
