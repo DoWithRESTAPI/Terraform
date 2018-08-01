@@ -121,7 +121,20 @@ will be used for the variable.
           value = "${var.myname}"
           }
   
-  Now run: terraform apply
+  Now run: terraform output
     you will see your output
-    
-  you can also qurey about your variable like: terraform output ip
+    #we this output will also displayed while running terraform apply command as well
+   
+  terrafomr output cmd syntax:
+  ===========================
+  terraform output
+  It will display all outputs
+  
+  terraform output <out_put_variable>
+  It will display only required output variable.
+  
+  
+  #you can also qurey about your variable like: terraform output ip
+  
+  Note: See more about: terraform output -json instance_ips | jq '.value[0]'
+  
