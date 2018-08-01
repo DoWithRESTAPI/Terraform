@@ -1,0 +1,17 @@
+#Defining a string
+
+variable "myname" {
+  type="string"
+  default="Narendra from DoWithPython Technology"
+}
+
+
+#Defining a string with multiple lines
+
+variable "myinfo" {
+  type="string"
+  default=<<EOF
+  This is a long string
+  Representd in multiple lines
+  EOF
+  }
