@@ -1,0 +1,9 @@
+variable "mybool" {
+  default = false
+}
+
+Check the above syntax once.
+
+variable "mynewbol" {
+ default=true
+}
