@@ -1,0 +1,32 @@
+Terraform lists are simliar to python lists.
+Terraform maps are simpilar to python dicts
+
+
+Defining lists:
+===============
+                 list value is an ordered sequence of strings indexed by integers starting with zero.
+    varialbe "mynewlist" {
+       type="list" #This is optional if we define default value, but if we want to read from somewhere we need to write type.
+       default=["hi","i","am","fine"]
+       }
+
+Note: if values are stored with [] then terrafrom can understand that, that is a list variable
+
+
+
+Defining maps:
+============= Maps are simplilar to python dict.
+              That meank key value pair representation
+ 
+ variable "mymap" {
+ type="map"  #This is optional if we define default value, but if we want to read from somewhere we need to write type.
+ default={
+ "key1"="value1"
+ "key2"="value2"
+ }
+ 
+ 
+ 
+ 
+ 
+ 
