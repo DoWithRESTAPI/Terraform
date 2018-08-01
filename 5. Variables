@@ -134,6 +134,7 @@ will be used for the variable.
   It will display only required output variable.
   
   
+  #Dont go with below concepts at initial stage
   #you can also qurey about your variable like: terraform output ip
   
   Note: See more about: terraform output -json instance_ips | jq '.value[0]'
