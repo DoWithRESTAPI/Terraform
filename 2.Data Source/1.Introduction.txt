@@ -1,0 +1,5 @@
+Clue:
+  How to see the existing data of aws?
+  Using Data source.
+  
+See internal and external data source
