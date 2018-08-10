@@ -1,0 +1,4 @@
+Step1: Download terrafrom from officail website based on your os(It is a ziped file)
+Step2: Extract it
+Step3: Add that path to system paths.
+Step4: Verfiy it by running "terraform --version" command
